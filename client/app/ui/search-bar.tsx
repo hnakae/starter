@@ -49,8 +49,8 @@ const SearchBar = () => {
       className="flex flex-col space-y-4 min-w-[700px] "
     >
       <textarea
-        className="bg-[#1F2222] w-full rounded-md mt-4 ring-1 focus:ring-2 ring-slate-500 outline-none focus:outline-none p-4 font-sans caret-superDuper h-full caret-[#21B8CD]"
-        placeholder="Enter bash commands"
+        className="bg-[#1F2222] w-full rounded-md mt-4 ring-1 focus:ring-2 ring-slate-500 outline-none focus:outline-none p-4 font-sans caret-superDuper h-full caret-accent text-lg"
+        placeholder="Enter your message"
         required
         value={value}
         onChange={handleChange}
