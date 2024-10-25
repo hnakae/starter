@@ -44,9 +44,12 @@ const SearchBar = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col space-y-4 min-w-[700px] "
+    >
       <textarea
-        className="bg-[#1F2222] w-full rounded-md mt-4 ring-1 focus:ring-2 ring-slate-500 outline-none focus:outline-none p-4 font-sans caret-superDuper h-full"
+        className="bg-[#1F2222] w-full rounded-md mt-4 ring-1 focus:ring-2 ring-slate-500 outline-none focus:outline-none p-4 font-sans caret-superDuper h-full caret-[#21B8CD]"
         placeholder="Enter bash commands"
         required
         value={value}
@@ -59,7 +62,7 @@ const SearchBar = () => {
           <pre className="text-white">{response.message}</pre>
         </div>
       )} */}
-      <h3 className="text-white mb-2">Command History:</h3>
+      <h3 className="text-white mb-2">Message History:</h3>
       {history.length > 0 && ( // Show history only if there's more than one response
         <div className="mt-4 p-4 bg-[#1F2222] rounded">
           {history.slice(0).map(
