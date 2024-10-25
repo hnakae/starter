@@ -8,14 +8,19 @@ interface APIResponse {
 
 const SearchBar = () => {
   const [value, setValue] = useState<string>("");
-  const [response, setResponse] = useState<APIResponse | null>(null);
+  const [, setResponse] = useState<APIResponse | null>(null);
+  const [history, setHistory] = useState<APIResponse[]>([]);
 
   const handleSubmit = async (e?: FormEvent<HTMLFormElement>) => {
     if (e) e.preventDefault();
     try {
       const res = await contactAPI(value);
       if (typeof res.message === "string") {
+        const newResponse: APIResponse = {
+          message: res.message,
+        };
         setResponse({ message: res.message });
+        setHistory((prevHistory) => [...prevHistory, newResponse]);
       } else {
         throw new Error("Unexpected response format");
       }
@@ -49,9 +54,27 @@ const SearchBar = () => {
         onKeyPress={handleKeyPress}
       />
 
-      {response && (
+      {/* {response && (
         <div className="mt-4 p-4  bg-[#1F2222] rounded">
           <pre className="text-white">{response.message}</pre>
+        </div>
+      )} */}
+      <h3 className="text-white mb-2">Command History:</h3>
+      {history.length > 0 && ( // Show history only if there's more than one response
+        <div className="mt-4 p-4 bg-[#1F2222] rounded">
+          {history.slice(0).map(
+            (
+              item,
+              index // Exclude the latest response from history
+            ) => (
+              <div key={index} className="mt-2">
+                {/* <span className="text-gray-400">
+                  {new Date(item.timestamp).toLocaleString()}:{" "}
+                </span> */}
+                <pre className="text-white inline">{item.message}</pre>
+              </div>
+            )
+          )}
         </div>
       )}
     </form>
@@ -59,5 +82,3 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
-
-

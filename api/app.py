@@ -14,7 +14,7 @@ def handleMessage():
     
     # Process the message here
     # For example, you might want to return an echo of the message
-    response = {"message": f"from api: {message}"}
+    response = {"message": f"server: {message}"}
     
     return jsonify(response), 200
 
