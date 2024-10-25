@@ -49,7 +49,7 @@ const SearchBar = () => {
       className="flex flex-col space-y-4 min-w-[700px] "
     >
       <textarea
-        className="bg-[#1F2222] w-full rounded-md mt-4 ring-1 focus:ring-2 ring-slate-500 outline-none focus:outline-none p-4 font-sans caret-superDuper h-full caret-accent text-lg"
+        className="bg-fillColor w-full rounded-md mt-4 ring-1 focus:ring-2 ring-borderColor outline-none focus:ring-borderColorFocus focus:outline-none p-4 font-sans caret-superDuper h-full caret-accent text-lg"
         placeholder="Enter your message"
         required
         value={value}
@@ -64,13 +64,13 @@ const SearchBar = () => {
       )} */}
       <h3 className="text-white mb-2">Message History:</h3>
       {history.length > 0 && ( // Show history only if there's more than one response
-        <div className="mt-4 p-4 bg-[#1F2222] rounded">
+        <div className="mt-4 p-4 bg-fillColor rounded">
           {history.slice(0).map(
             (
               item,
               index // Exclude the latest response from history
             ) => (
-              <div key={index} className="mt-2">
+              <div key={index} className="mb-2">
                 {/* <span className="text-gray-400">
                   {new Date(item.timestamp).toLocaleString()}:{" "}
                 </span> */}
